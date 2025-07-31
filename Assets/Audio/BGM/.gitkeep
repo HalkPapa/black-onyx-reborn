@@ -1,0 +1,12 @@
+# BGMファイル配置フォルダ
+# 
+# 以下のファイルを配置してください:
+# - title.mp3    (タイトル画面BGM)
+# - dungeon.mp3  (ダンジョンBGM) 
+# - battle.mp3   (戦闘BGM)
+#
+# 推奨設定:
+# - 形式: MP3/OGG
+# - 品質: 128-192 kbps
+# - ループ: Yes
+# - Load Type: Streaming

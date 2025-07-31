@@ -1,0 +1,13 @@
+# SEファイル配置フォルダ
+#
+# 以下のファイルを配置してください:
+# - button.wav   (ボタンクリック音)
+# - walk.wav     (歩行音)
+# - attack.wav   (攻撃音)
+# - item.wav     (アイテム取得音)
+#
+# 推奨設定:
+# - 形式: WAV/OGG
+# - 品質: 44.1kHz, 16bit
+# - ループ: No
+# - Load Type: Decompress On Load
