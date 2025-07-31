@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎮 Black Onyx Reborn - ブラックオニキス復刻版</title>
+    <meta name="description" content="日本初の本格RPG「ブラックオニキス」の現代版復刻プロジェクト">
+    <meta name="keywords" content="RPG, ゲーム, レトロ, ブラックオニキス, ダンジョン, ターン制">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💎</text></svg>">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="public/css/main.css">
+    <link rel="stylesheet" href="public/css/game.css">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="src/core/GameEngine.js" as="script">
+    <link rel="preload" href="public/css/main.css" as="style">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="screen active">
+        <div class="loading-container">
+            <div class="logo">
+                <h1>💎 Black Onyx Reborn</h1>
+                <p>ブラックオニキス復刻版</p>
+            </div>
+            <div class="loading-bar">
+                <div class="loading-progress" id="loading-progress"></div>
+            </div>
+            <div class="loading-text" id="loading-text">ゲームを読み込み中...</div>
+        </div>
+    </div>
+
+    <!-- Title Screen -->
+    <div id="title-screen" class="screen">
+        <div class="title-container">
+            <div class="title-logo">
+                <h1 class="title-main">BLACK ONYX</h1>
+                <h2 class="title-sub">REBORN</h2>
+                <p class="title-description">ブラックオニキス復刻版</p>
+            </div>
+            
+            <nav class="title-menu">
+                <button class="menu-button" id="new-game-btn">
+                    <span class="menu-icon">🆕</span>
+                    <span class="menu-text">新しいゲーム</span>
+                </button>
+                <button class="menu-button" id="load-game-btn">
+                    <span class="menu-icon">📁</span>
+                    <span class="menu-text">ゲームを続ける</span>
+                </button>
+                <button class="menu-button" id="settings-btn">
+                    <span class="menu-icon">⚙️</span>
+                    <span class="menu-text">設定</span>
+                </button>
+                <button class="menu-button" id="about-btn">
+                    <span class="menu-icon">ℹ️</span>
+                    <span class="menu-text">ゲームについて</span>
+                </button>
+            </nav>
+            
+            <div class="title-footer">
+                <p>© 2025 Black Onyx Reborn Development Team</p>
+                <p>Original Black Onyx © 1984 Henex/Heartsoft</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-container">
+            <!-- Game Canvas -->
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+            
+            <!-- Game UI Overlay -->
+            <div class="game-ui">
+                <!-- Status Bar -->
+                <div class="status-bar">
+                    <div class="party-status" id="party-status">
+                        <!-- パーティステータス表示 -->
+                    </div>
+                    <div class="game-info">
+                        <span id="current-time">00:00</span>
+                        <span id="current-location">タウン</span>
+                    </div>
+                </div>
+                
+                <!-- Message Window -->
+                <div class="message-window" id="message-window">
+                    <div class="message-content" id="message-content">
+                        ようこそ、ブラックオニキスの世界へ！
+                    </div>
+                </div>
+                
+                <!-- Command Menu -->
+                <div class="command-menu" id="command-menu">
+                    <div class="command-grid">
+                        <button class="command-btn" data-command="move">移動</button>
+                        <button class="command-btn" data-command="search">調べる</button>
+                        <button class="command-btn" data-command="inventory">持ち物</button>
+                        <button class="command-btn" data-command="status">ステータス</button>
+                        <button class="command-btn" data-command="magic">魔法</button>
+                        <button class="command-btn" data-command="rest">休憩</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Screen -->
+    <div id="settings-screen" class="screen">
+        <div class="settings-container">
+            <h2>⚙️ 設定</h2>
+            <div class="settings-content">
+                <div class="setting-group">
+                    <label>音量設定</label>
+                    <div class="volume-controls">
+                        <label>BGM: <input type="range" id="bgm-volume" min="0" max="100" value="70"></label>
+                        <label>効果音: <input type="range" id="se-volume" min="0" max="100" value="80"></label>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label>表示設定</label>
+                    <div class="display-controls">
+                        <label><input type="checkbox" id="fullscreen-mode"> フルスクリーンモード</label>
+                        <label><input type="checkbox" id="show-fps"> FPS表示</label>
+                    </div>
+                </div>
+                
+                <div class="setting-group">
+                    <label>ゲーム設定</label>
+                    <div class="game-controls">
+                        <label><input type="checkbox" id="auto-save"> オートセーブ</label>
+                        <label><input type="checkbox" id="skip-animations"> アニメーション短縮</label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="settings-buttons">
+                <button class="btn btn-primary" id="save-settings">設定を保存</button>
+                <button class="btn btn-secondary" id="back-to-title">タイトルに戻る</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="src/main.js"></script>
+    
+    <!-- Analytics & Performance -->
+    <script>
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            console.log('🎮 Black Onyx Reborn loaded successfully');
+            console.log('⏱️ Load time:', performance.now().toFixed(2) + 'ms');
+        });
+    </script>
+</body>
+</html>

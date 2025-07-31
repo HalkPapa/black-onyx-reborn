@@ -1,0 +1,44 @@
+{
+  "name": "black-onyx-reborn",
+  "version": "0.1.0",
+  "description": "ブラックオニキス復刻版 - Classic Japanese RPG Revival Project",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server . -p 3000 -c-1",
+    "start": "npm run dev",
+    "build": "node scripts/build.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write src/**/*.js"
+  },
+  "keywords": [
+    "rpg",
+    "game",
+    "retro",
+    "japanese",
+    "black-onyx",
+    "dungeon-crawler",
+    "turn-based",
+    "revival"
+  ],
+  "author": "Black Onyx Reborn Development Team",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "jest": "^29.7.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.5"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "file:///Users/koikedaisuke/MyProjects/ClaudeRooms/1-1/projects/black-onyx-reborn"
+  },
+  "bugs": {
+    "url": "file:///Users/koikedaisuke/MyProjects/ClaudeRooms/1-1/projects/black-onyx-reborn/issues"
+  },
+  "homepage": "file:///Users/koikedaisuke/MyProjects/ClaudeRooms/1-1/projects/black-onyx-reborn#readme"
+}
